@@ -7,7 +7,16 @@ from nltk.corpus import stopwords
 from collections import Counter
 from tqdm.auto import tqdm
 
-def main():
+import argparse
+def process_command():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-c','--caseFolding', action="store_true", help='Case Folding')
+    parser.add_argument('-srm','--stopwordRemoval', action="store_true", help='Stopword Removal')
+    parser.add_argument('-stem','--stemming', action="store_true", help='Stemming')
+    return parser.parse_args()
+    
+def main(args):
+
     DOCS_PATH = 'docs'
     PROCESSED_DOCS_PATH = 'processed_docs'
 
@@ -52,7 +61,9 @@ def main():
                 # Remove newline characters, Home\nHi -> Home Hi
                 concatenated_body_text = " ".join(body_text.split())
                 # Case folding, A -> a, additional character -> ""
-                processed_concatenated_body_text = re.sub(r"[^A-Za-z0-9]+", ' ', concatenated_body_text).lower()
+                processed_concatenated_body_text = re.sub(r"[^A-Za-z0-9]+", ' ', concatenated_body_text)
+                if args.caseFolding :
+                    processed_concatenated_body_text = processed_concatenated_body_text.lower()
 
                 with open(f"{PROCESSED_DOCS_PATH}/{file}_processed", mode="w", encoding="utf-8", errors='strict', buffering=1) as f1:
                     f1.write(processed_concatenated_body_text)
@@ -93,14 +104,20 @@ def main():
 
             tokenized = word_tokenizer.tokenize(contents)
             # tokenized = ["usernam", "member", "usernam"] # for test
-
-            tokenized_and_rm_stopwords_and_stemmed = [stemmer.stem(word) for word in tokenized if word not in stopwords.words('english') and not stemmer.stem(word).isnumeric()]
-            tokens_dict = Counter(tokenized_and_rm_stopwords_and_stemmed)
+            if args.stopwordRemoval :
+                tokenized = [word for word in tokenized if word not in stopwords.words('english')]
+            
+            if args.stemming :
+                tokenized = [stemmer.stem(word) for word in tokenized]
+            
+            tokenized = [word for word in tokenized if not word.isnumeric()]
+            
+            tokens_dict = Counter(tokenized)
 
             distinct_tokens = tokens_dict.keys()
 
             for term in distinct_tokens:
-                pos_list = [i for i, x in enumerate(tokenized_and_rm_stopwords_and_stemmed) if x == term]
+                pos_list = [i for i, x in enumerate(tokenized) if x == term]
                 term_freq = len(pos_list)
                 inner_key_format = f"{doc_num},{term_freq}"
 
@@ -151,10 +168,6 @@ def main():
     for term, doc_and_doc_freq_pos_list in all_docs_all_tokens_dict.items():
         term_in_doc_freq = len(doc_and_doc_freq_pos_list)
 
-        # for doc_and_doc_freq in doc_and_doc_freq_pos_list:
-        #     each_doc_key_freq = int(list(doc_and_doc_freq.keys())[0].split(',')[1])
-        #     term_in_doc_freq += each_doc_key_freq
-
         each_term_in_each_doc_freq_dict[term] = f'{term}, {term_in_doc_freq}'
 
         pb.set_description('Transforming output format: ', refresh=True)
@@ -172,4 +185,5 @@ def main():
     print("all_docs_freq_all_tokens_dict successfully saved !")
 
 if __name__ == '__main__':
-    main()
+    args = process_command()
+    main(args)
