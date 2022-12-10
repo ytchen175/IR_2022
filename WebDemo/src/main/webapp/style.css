@@ -6,11 +6,62 @@ body{
     height: 100%;
     background-size: cover;
     font-family: sans-serif;
+    position: absolute;
+}
+
+.nav-bar{
+    width: 100%;
+    height: 65px;
+    position: relative;
+    background: #0a4b33;
+    box-shadow: 0px 2px 8px 0px #333;
+}
+.nav-container{
+    margin: 0 auto;
+    position: relative;
+}
+
+.menu-content ,.keywordPage{
+    width: 200px;
+    height: 65px;
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+    Letter-space: -0.05em;
+    position: relative;
+    background: #0a4b33;
+    color: #fff;
+    line-height: 65px;
+}
+
+.nav-container a{
+    color: #fff;
+    text-decoration: none;
+}
+.arrow-up{
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 20px solid #fff;
+    right: 151px;
+    top: 50px;
+}
+.login-form{
+    position: absolute;
+    width: 300px;
+    height: auto;
+    background: #fff;
+    right: 58px;
+    top: 60px;
+    border-radius: 3px;
+    border-bottom: 5px solid grey;
 }
 
 .box
 {
-    position: absolute;
+    position: relative;
     top: 50%;
     left: 50%;
     width: 500px;

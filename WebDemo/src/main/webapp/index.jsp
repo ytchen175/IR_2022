@@ -2,11 +2,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JSP - Hello World</title>
+    <title>Term Project</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<nav class="nav-bar">
+    <section class="nav-container">
+        <aside class="menu">
+            <div class="menu-content">
+                <a href="#">Login</a> | <a href="#">Register</a>
+            </div>
+            <div class="arrow-up"></div>
+            <dif class="login-form">
+                <form>
+                    <div>
+                        <label>Username</label>
+                        <input type="text" required>
+                    </div>
+                    <div>
+                        <label>Password</label>
+                        <input type="password" required>
+                    </div>
+                    <div>
+                        <input type="submit" value="Log In">
+                    </div>
+                </form>
+            </dif>
+        </aside>
+        <aside class="other-function">
+            <div class="keywordPage">
+                <a href="#">
+                    關鍵字功能
+                </a>
+            </div>
 
+        </aside>
+
+    </section>
+</nav>
 <div class="box">
     <form onsubmit="return false;">
         <input id="searchContent" type="text" name="" placeholder="Type...">
@@ -14,7 +47,6 @@
     </form>
     <div class="result">
         <nav id="resultInNev">
-
         </nav>
     </div>
 </div>
@@ -37,9 +69,10 @@
                 'searchContent': $("#searchContent").val(),
             },
             success : function(result) {
+                $("#resultInNev").empty();
                 for(var i = 0; i < result.length; i++) {
                     var A = document.createElement("A");
-                    A.setAttribute("href",result[i]);
+                    A.setAttribute("href","doc/"+result[i]);
                     A.appendChild(document.createTextNode(result[i]));
                     document.getElementById("resultInNev").appendChild(A);
                 }
