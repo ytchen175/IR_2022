@@ -1,4 +1,4 @@
-package com.example.webdemo;
+package com.example.webdemo.Servlet;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,6 +22,8 @@ public class SearchServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException{
         Gson gson = new Gson();
         response.setCharacterEncoding("UTF-8");
+        String searchContent = request.getParameter("searchContent");
+        System.out.println(searchContent);
         List<String> result = new ArrayList<>();
         result.add("docID_00000.html");
         result.add("docID_00001.html");

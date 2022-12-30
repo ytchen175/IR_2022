@@ -33,15 +33,15 @@
                 <form onsubmit="return false;">
                     <div>
                         <label>Username</label>
-                        <input type="text" required>
+                        <input id="usernameRegsitered" type="text" required>
                     </div>
                     <div>
                         <label>Password</label>
-                        <input type="text" required>
+                        <input id="passwordRegsitered" type="text" required>
                     </div>
                     <div>
                         <label>email</label>
-                        <input type="email" required>
+                        <input id="emailRegsitered" type="email" required>
                     </div>
                     <div>
                         <input type="submit" value="Register">
@@ -86,6 +86,9 @@
                 arrowLogin.show();
                 loginForm.show();
                 isLoginDropdownOpened = true;
+                arrowRegister.hide();
+                registerForm.hide();
+                isRegisterDropdownOpened = false;
             }
             else{
                 arrowLogin.hide();
@@ -102,6 +105,9 @@
                 arrowRegister.show();
                 registerForm.show();
                 isRegisterDropdownOpened = true;
+                arrowLogin.hide();
+                loginForm.hide();
+                isLoginDropdownOpened = false;
             }
             else{
                 arrowRegister.hide();
@@ -124,7 +130,19 @@
 
     }
     function register(){
+        $.ajax({
+            url:"RegisterServlet",
+            type:"POST",
+            dataType:"json",
+            data:{
+                'username': $("#usernameRegsitered").val(),
+                'password': $("#passwordRegsitered").val(),
+                'email': $("#emailRegsitered").val()
+            },
+            success : function(result) {
 
+            }
+        })
     }
     function getSearchResult(){
         $.ajax({
@@ -138,7 +156,7 @@
                 $("#resultInNev").empty();
                 for(var i = 0; i < result.length; i++) {
                     var A = document.createElement("A");
-                    A.setAttribute("href","doc/"+result[i]);
+                    A.setAttribute("href","docs/"+result[i]);
                     A.appendChild(document.createTextNode(result[i]));
                     document.getElementById("resultInNev").appendChild(A);
                 }
