@@ -136,7 +136,7 @@ body{
     position: relative;
     top: 50%;
     left: 50%;
-    width: 500px;
+    width: 800px;
     transform: translate(-50%,-50%);
 }
 .box input{
@@ -173,7 +173,7 @@ body{
     border: none;
     outline: none;
     cursor: pointer;
-    background: #ffc107;
+    background: #cc4827;
     color: rgb(252, 250, 250);
 }
 .result{
@@ -186,16 +186,23 @@ body{
 .result nav{
     height:500px;
     width:100%;
-    overflow:hidden;
     overflow-y:auto;
 }
-.result nav a{
+.result nav div{
     position: relative;
     display: block;
     padding: 5px 0;
-    width: 500px;
-    height: 30px;
-    background: #fff;
+    width: 100%;
     box-shadow: 10px 10px 15px rgba(0,0,0,0.025);
 }
-
+.result nav div a{
+    font-size: 25px;
+    font-weight: bold;
+    font-family: "Times New Roman";
+    -webkit-text-stroke: 0.1px #fb00ff;
+}
+.result nav div div{
+    font-size: 16px;
+    font-family: Trebuchet MS, sans-serif;
+    -webkit-text-stroke: 0.2px #1eff00;
+}

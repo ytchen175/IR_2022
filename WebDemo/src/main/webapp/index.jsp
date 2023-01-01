@@ -3,25 +3,33 @@
 <html>
 <head>
     <title>Term Project</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style1.css">
 </head>
 <body>
 <nav class="nav-bar">
     <section class="nav-container">
         <aside class="menu">
             <div class="menu-content">
-                <a href="#" id="login">Login</a> | <a href="#" id="register">Register</a>
+                <c:if test="condition"></c:if>
+                <% if(session.getAttribute("userName") != null){ %>
+                <a href="#" id="user"><%= session.getAttribute("userName")%></a>
+                <% }else { %>
+                <a href="#" id="login">Login</a>
+                <% } %>
+                | <a href="#" id="register">Register</a>
             </div>
             <div class="arrow-up-login"></div>
+
+
             <dif class="login-form">
                 <form onsubmit="return false;">
                     <div>
                         <label>Username</label>
-                        <input type="text" required>
+                        <input id="usernameLogin" type="text" required>
                     </div>
                     <div>
                         <label>Password</label>
-                        <input type="password" required>
+                        <input id="passwordLogin" type="password" required>
                     </div>
                     <div>
                         <input type="submit" value="Log In" id="loginSubmit">
@@ -49,14 +57,14 @@
                 </form>
             </dif>
         </aside>
-        <aside class="other-function">
-            <div class="keywordPage">
-                <a href="#">
-                    關鍵字功能
-                </a>
-            </div>
+<%--        <aside class="other-function">--%>
+<%--            <div class="keywordPage">--%>
+<%--                <a href="docs/docID_00000.html">--%>
+<%--                    關鍵字功能--%>
+<%--                </a>--%>
+<%--            </div>--%>
 
-        </aside>
+<%--        </aside>--%>
 
     </section>
 </nav>
@@ -78,7 +86,7 @@
 <script>
     $(document).ready(function (){
         var arrowLogin = $(".arrow-up-login");
-        var loginForm = $(".login-form")
+        var loginForm = $(".login-form");
         var isLoginDropdownOpened = false;
         $("#login").click(function (event){
             event.preventDefault();
@@ -127,7 +135,25 @@
         register();
     });
     function login(){
-
+        $.ajax({
+            url:"LoginServlet",
+            type:"POST",
+            dataType:"json",
+            data:{
+                'username': $("#usernameLogin").val(),
+                'password': $("#passwordLogin").val(),
+            },
+            success : function() {
+                $("#usernameLogin").empty();
+                $("#passwordLogin").empty();
+                var arrowLogin = $(".arrow-up-login");
+                var loginForm = $(".login-form");
+                arrowLogin.hide();
+                loginForm.hide();
+                $("#login").hide();
+                window.location.reload();
+            }
+        })
     }
     function register(){
         $.ajax({
@@ -153,12 +179,34 @@
                 'searchContent': $("#searchContent").val(),
             },
             success : function(result) {
+
+                console.log("result:");
+
                 $("#resultInNev").empty();
                 for(var i = 0; i < result.length; i++) {
+
+
+                    var wrapper = document.createElement("div");
+
                     var A = document.createElement("A");
-                    A.setAttribute("href","docs/"+result[i]);
-                    A.appendChild(document.createTextNode(result[i]));
-                    document.getElementById("resultInNev").appendChild(A);
+                    A.setAttribute("href",result[i].url);
+                    A.appendChild(document.createTextNode(result[i].title));
+                    var A = document.createElement("A");
+                    A.setAttribute("href",result[i].url);
+                    A.appendChild(document.createTextNode(result[i].title));
+
+
+
+                    var textDiv = document.createElement("div");
+                    var newContent = document.createTextNode(result[i].body.slice(0,200));
+
+                    // add the text node to the newly created div
+                    textDiv.appendChild(newContent);
+
+                    wrapper.appendChild(A);
+                    wrapper.appendChild(textDiv);
+
+                    document.getElementById("resultInNev").appendChild(wrapper);
                 }
             }
         })

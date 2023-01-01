@@ -1,19 +1,26 @@
-package com.example.webdemo.DTO;
+package com.example.webdemo.Bean;
 
-public class DocumentDTO {
-    private String id;
+public class Document {
+    private String docID;
     private int score;
     private String title;
     private String h1;
+
     private String body;
 
-    public String getId() {
-        return id;
+    public String getLink(){
+        return "docs/docID_"+this.docID + ".html";
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public String getDocID() {
+        return docID;
     }
+
+    public void setDocID(String docID) {
+        this.docID = docID;
+    }
+
+
 
     public int getScore() {
         return score;
@@ -46,4 +53,5 @@ public class DocumentDTO {
     public void setBody(String body) {
         this.body = body;
     }
+
 }

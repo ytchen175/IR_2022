@@ -9,7 +9,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UserDAOImpl implements UserDAO{
-    private DBConnection dbConnection = new SQLiteConnectionImpl();
+    private DBConnection dbConnection;
+
+    public UserDAOImpl(){
+        this.dbConnection = new SQLiteConnectionImpl();
+    }
+
+    public UserDAOImpl(String dbPath){
+        this.dbConnection = new SQLiteConnectionImpl(dbPath);
+    }
 
     public static void main(String[] args) {
         UserDAOImpl dao = new UserDAOImpl();

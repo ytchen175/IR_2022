@@ -19,6 +19,5 @@ public class RegisterServlet extends HttpServlet {
         String email = request.getParameter("email");
 
 
-
     }
 }
