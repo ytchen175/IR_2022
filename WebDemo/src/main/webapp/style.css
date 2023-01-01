@@ -38,7 +38,7 @@ body{
     color: #fff;
     text-decoration: none;
 }
-.arrow-up{
+.arrow-up-login{
     width: 0;
     height: 0;
     position: absolute;
@@ -47,6 +47,18 @@ body{
     border-bottom: 20px solid #fff;
     right: 151px;
     top: 50px;
+    display: none;
+}
+.arrow-up-register{
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 20px solid #fff;
+    right: 106px;
+    top: 50px;
+    display: none;
 }
 .login-form{
     position: absolute;
@@ -54,9 +66,69 @@ body{
     height: auto;
     background: #fff;
     right: 58px;
-    top: 60px;
+    top: 65px;
     border-radius: 3px;
     border-bottom: 5px solid grey;
+    display: none;
+}
+.register-form{
+    position: absolute;
+    width: 300px;
+    height: auto;
+    background: #fff;
+    right: 28px;
+    top: 65px;
+    border-radius: 3px;
+    border-bottom: 5px solid grey;
+    display: none;
+}
+
+.login-form>form , .register-form>form {
+    width: 250px;
+    margin: 25px auto;
+    font-size: 16px;
+    font-family: sans-serif, Arial;
+    color: grey;
+    Letter-spacing: -0.05em;
+}
+
+.login-form >form input[type="text"] , .register-form >form input[type="text"] ,.register-form >form input[type="email"]{
+    width: 240px;
+    height: 30px;
+    border: 0px;
+    outline: none;
+    box-shadow: inset 0 0 10px #eee;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    font-family: sans-serif,Arial;
+    font-size: 16px;
+}
+.login-form >form input[type="password"]{
+    width: 240px;
+    height: 30px;
+    border: 0px;
+    outline: none;
+    box-shadow: inset 0 0 10px #eee;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    font-family: sans-serif,Arial;
+    font-size: 16px;
+}
+.login-form >form input[type="submit"] , .register-form >form input[type="submit"]{
+    width: 95%;
+    height: 35px;
+    background: #0b8256;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: sans-serif,Arial;
+    color: white;
+    outline: none;
+    border: 0px;
+    border-radius: 3px;
+    letter-spacing: -0.05px;
+    cursor: pointer;
 }
 
 .box
