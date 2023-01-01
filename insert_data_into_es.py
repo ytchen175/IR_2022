@@ -24,19 +24,32 @@ def get_docs(f, docID):
         'docID': docID,
         'title': '',
         'h1': '',
-        'body': ''
+        'body': '',
+        'origin_body': ''
     }
-    tag_list = ['title', 'h1', 'body']
+
+    tag_list = ['title', 'h1', 'body', 'origin_body']
 
     for tag in tag_list:
-        tag_text = soup.find(tag) # get text in <tag>
+        if tag == 'origin_body':
+            tag = 'body'
+            tag_text = soup.find(tag) # get text in <tag>
 
-        if tag_text is None:
-            processed_text = clean_text(soup.get_text())
-            doc_info.update({tag: processed_text}) # all text in html
+            if tag_text is None:
+                all_text = clean_text(soup.get_text())
+                doc_info.update({'origin_body': all_text}) # all text in html
+            else:
+                origin_body_text = clean_text(tag_text.get_text())
+                doc_info.update({'origin_body': origin_body_text})
         else:
-            processed_text = clean_text(tag_text.get_text())
-            doc_info.update({tag: processed_text})
+            tag_text = soup.find(tag) # get text in <tag>
+
+            if tag_text is None:
+                processed_text = clean_text(soup.get_text())
+                doc_info.update({tag: processed_text}) # all text in html
+            else:
+                processed_text = clean_text(tag_text.get_text())
+                doc_info.update({tag: processed_text})
 
     return doc_info
 
