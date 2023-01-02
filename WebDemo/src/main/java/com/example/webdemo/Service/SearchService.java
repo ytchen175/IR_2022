@@ -22,6 +22,7 @@ public class SearchService {
             System.out.println(document.getScore());
             System.out.println(document.getDocID());
             System.out.println(document.getTitle());
+            System.out.println(document.getBody().equals(document.getOriginalBody()));
         }
     }
 
@@ -51,6 +52,7 @@ public class SearchService {
             document.setTitle(documentJSON.getString("title"));
             document.setH1(documentJSON.getString("h1"));
             document.setBody(documentJSON.getString("body"));
+            document.setOriginalBody(documentJSON.getString("origin_body"));
             results.add(document);
         }
         return results;

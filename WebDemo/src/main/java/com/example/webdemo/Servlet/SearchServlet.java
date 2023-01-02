@@ -41,7 +41,7 @@ public class SearchServlet extends HttpServlet {
             jsonObject.put("title",searchResults.get(i).getTitle());
             jsonObject.put("score",searchResults.get(i).getScore());
             jsonObject.put("h1",searchResults.get(i).getH1());
-            jsonObject.put("body",searchResults.get(i).getBody());
+            jsonObject.put("original_body",searchResults.get(i).getOriginalBody());
             jsonArray.put(jsonObject);
 
         }

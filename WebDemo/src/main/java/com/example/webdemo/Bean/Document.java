@@ -8,6 +8,16 @@ public class Document {
 
     private String body;
 
+    private String originalBody;
+
+    public String getOriginalBody() {
+        return originalBody;
+    }
+
+    public void setOriginalBody(String originalBody) {
+        this.originalBody = originalBody;
+    }
+
     public String getLink(){
         return "docs/docID_"+this.docID + ".html";
     }

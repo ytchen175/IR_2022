@@ -60,7 +60,7 @@ public class ElasticSearchHttpRequesterService extends HttpRequester {
             request.addHeader("Content-Type", "application/json; utf-8");
             request.setEntity(params);
             response = httpClient.execute(request);
-            /*Checking response */
+
             if (response != null) {
                 result = super.getResult(response);
 
