@@ -36,10 +36,10 @@ def get_docs(f, docID):
             tag_text = soup.find(tag) # get text in <tag>
 
             if tag_text is None:
-                all_text = clean_text(soup.get_text())
+                all_text = soup.get_text()
                 doc_info.update({'origin_body': all_text}) # all text in html
             else:
-                origin_body_text = clean_text(tag_text.get_text())
+                origin_body_text = tag_text.get_text()
                 doc_info.update({'origin_body': origin_body_text})
         else:
             tag_text = soup.find(tag) # get text in <tag>
