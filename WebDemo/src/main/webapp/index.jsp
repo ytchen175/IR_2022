@@ -198,7 +198,7 @@
 
 
                     var textDiv = document.createElement("div");
-                    var newContent = document.createTextNode(result[i].original_body.slice(0,200));
+                    var newContent = document.createTextNode(result[i].original_body.slice(0,200)+"...");
 
                     // add the text node to the newly created div
                     textDiv.appendChild(newContent);
