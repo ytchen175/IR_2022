@@ -41,12 +41,11 @@ public class SQLiteConnectionImpl implements DBConnection{
     @Override
     public Connection getConnection() {
 
-        System.out.println("actual dbpath:"+this.sqliteDBPath);
         Connection conn = null;
         try {
             Class.forName("org.sqlite.JDBC");
         } catch (ClassNotFoundException e) {
-            System.out.println("xxxxxxx");;
+            e.printStackTrace();
         }
         try {
             conn = DriverManager.getConnection(this.sqliteDBPath);

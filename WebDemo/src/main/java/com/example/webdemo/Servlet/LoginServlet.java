@@ -23,7 +23,7 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         request.setCharacterEncoding("UTF-8");
-        String path = "jdbc:sqlite:E:\\userdb.db";
+        String path = "jdbc:sqlite:"+"E:\\userdb.db";
 
         String username = request.getParameter("username");
         String password = request.getParameter("password");

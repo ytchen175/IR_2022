@@ -24,21 +24,7 @@ public class ElasticSearchHttpRequesterService extends HttpRequester {
         super(url);
     }
 
-    public static void main(String[] args) throws IOException {
 
-        HttpRequester service = new ElasticSearchHttpRequesterService("http://localhost:9200/warc/_search");
-        service.setRequestParameter("computer science");
-        JSONObject object =service.makeHttpRequestAndGetResult();
-//        System.out.println(object);
-        JSONObject jsonObject = object.getJSONObject("hits");
-        JSONArray jsonArray = jsonObject.getJSONArray("hits");
-        for(int i=0;i<jsonArray.length();i++){
-            JSONObject obj = jsonArray.getJSONObject(i);
-            System.out.println(obj);
-            JSONObject document = obj.getJSONObject("_source");
-            System.out.println(document.getString("docID"));
-        }
-    }
 
     public void setRequestParameter(String searchContent){
         JSONObject inner1 = new JSONObject();
