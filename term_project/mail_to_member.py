@@ -63,7 +63,7 @@ with smtplib.SMTP(host="smtp.gmail.com", port="587") as smtp:  # 設定SMTP伺�
     try:
         smtp.ehlo()  # 驗證SMTP伺服器
         smtp.starttls()  # 建立加密傳輸
-        smtp.login("ntut.ir.system@gmail.com", "zrhtixerqbccthwx")  # 登入寄件者gmail
+        smtp.login("ntut.ir.system@gmail.com", "your token")  # 登入寄件者gmail (account deleted)
 
         for username, keywords_list in user_keywords.items():
             mail = user_email[username] # get user email
