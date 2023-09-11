@@ -1,0 +1,12 @@
+POST http://localhost:8080/account/login
+###
+POST http://localhost:9200/warc/_search
+Content-Type: application/json
+
+{
+  "query":{
+    "match":{
+      "title": "computer science"
+    }
+  }
+}

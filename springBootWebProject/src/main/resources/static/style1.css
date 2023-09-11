@@ -1,0 +1,208 @@
+body{
+    background: url(aaa.jpg);
+    margin: 0;
+    padding: 0;
+    width:100%;
+    height: 100%;
+    background-size: cover;
+    font-family: sans-serif;
+    position: absolute;
+}
+
+.nav-bar{
+    width: 100%;
+    height: 65px;
+    position: relative;
+    background: #0a4b33;
+    box-shadow: 0px 2px 8px 0px #333;
+}
+.nav-container{
+    margin: 0 auto;
+    position: relative;
+}
+
+.menu-content ,.keywordPage{
+    width: 200px;
+    height: 65px;
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+    Letter-space: -0.05em;
+    position: relative;
+    background: #0a4b33;
+    color: #fff;
+    line-height: 65px;
+}
+
+.nav-container a{
+    color: #fff;
+    text-decoration: none;
+}
+.arrow-up-login{
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 20px solid #fff;
+    right: 151px;
+    top: 50px;
+    display: none;
+}
+.arrow-up-register{
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 20px solid #fff;
+    right: 106px;
+    top: 50px;
+    display: none;
+}
+.login-form{
+    position: absolute;
+    width: 300px;
+    height: auto;
+    background: #fff;
+    right: 58px;
+    top: 65px;
+    border-radius: 3px;
+    border-bottom: 5px solid grey;
+    display: none;
+}
+.register-form{
+    position: absolute;
+    width: 300px;
+    height: auto;
+    background: #fff;
+    right: 28px;
+    top: 65px;
+    border-radius: 3px;
+    border-bottom: 5px solid grey;
+    display: none;
+}
+
+.login-form>form , .register-form>form {
+    width: 250px;
+    margin: 25px auto;
+    font-size: 16px;
+    font-family: sans-serif, Arial;
+    color: grey;
+    Letter-spacing: -0.05em;
+}
+
+.login-form >form input[type="text"] , .register-form >form input[type="text"] ,.register-form >form input[type="email"]{
+    width: 240px;
+    height: 30px;
+    border: 0px;
+    outline: none;
+    box-shadow: inset 0 0 10px #eee;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    font-family: sans-serif,Arial;
+    font-size: 16px;
+}
+.login-form >form input[type="password"]{
+    width: 240px;
+    height: 30px;
+    border: 0px;
+    outline: none;
+    box-shadow: inset 0 0 10px #eee;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    font-family: sans-serif,Arial;
+    font-size: 16px;
+}
+.login-form >form input[type="submit"] , .register-form >form input[type="submit"]{
+    width: 95%;
+    height: 35px;
+    background: #0b8256;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: sans-serif,Arial;
+    color: white;
+    outline: none;
+    border: 0px;
+    border-radius: 3px;
+    letter-spacing: -0.05px;
+    cursor: pointer;
+}
+
+.box
+{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    width: 800px;
+    transform: translate(-50%,-50%);
+}
+.box input{
+    position: relative;
+    display: inline-block;
+    font-size: 20px;
+    box-sizing: border-box;
+    transition: .5s;
+}
+
+.box input{
+    position: relative;
+    display: inline-block;
+    font-size: 20px;
+    box-sizing: border-box;
+    transition: .5s;
+}
+
+.box input[type="text"]{
+    background: #fcfbf9;
+    width: 340px;
+    height: 50px;
+    border: none;
+    outline: none;
+    padding: 0 25px;
+    border-radius: 25px 0 0 25px;
+}
+
+.box input[type="submit"]{
+    position: relative;
+    border-radius: 0 25px 25px 0;
+    width: 150px;
+    height: 50px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: #cc4827;
+    color: rgb(252, 250, 250);
+}
+.result{
+    margin: 5px;
+    positive: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.result nav{
+    height:500px;
+    width:100%;
+    overflow-y:auto;
+}
+.result nav div{
+    position: relative;
+    display: block;
+    padding: 5px 0;
+    width: 100%;
+    box-shadow: 10px 10px 15px rgba(0,0,0,0.025);
+}
+.result nav div a{
+    font-size: 25px;
+    font-weight: bold;
+    font-family: "Times New Roman";
+    -webkit-text-stroke: 0.1px #fb00ff;
+}
+.result nav div div{
+    font-size: 16px;
+    font-family: Trebuchet MS, sans-serif;
+    -webkit-text-stroke: 0.2px #1eff00;
+}
