@@ -2,6 +2,7 @@ package com.example.springProjectIR.controller;
 
 import com.example.springProjectIR.Service.LoginService;
 import com.example.springProjectIR.Service.RegisterService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -40,9 +41,10 @@ public class UserAccountController {
     }
 
     @PostMapping("/login")
-    public Map<String,Object> login(String username,String password){
+    public Map<String,Object> login(String username, String password, HttpSession httpSession){
         boolean isLogin = this.loginService.isLoginSuccessful(username,password);
         HashMap<String,Object> map = new HashMap<>();
+        if(isLogin) httpSession.setAttribute("username",username);
         map.put("isLogin",isLogin);
         map.put("username",username);
         return map;

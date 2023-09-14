@@ -10,10 +10,17 @@
     <section class="nav-container">
         <aside class="menu">
             <div class="menu-content">
-                <c:if test="condition"></c:if>
-                <a href="#" id="user">User Name</a>
+
+                <% if(session.getAttribute("username") != null){ %>
+                <a href="#" id="user"><%= session.getAttribute("username")%></a>
+                <% }else { %>
                 <a href="#" id="login">Login</a>
+                <% } %>
                 | <a href="#" id="register">Register</a>
+
+<%--                <a href="#" id="user">User Name</a>--%>
+<%--                <a href="#" id="login">Login</a>--%>
+<%--                | <a href="#" id="register">Register</a>--%>
             </div>
             <div class="arrow-up-login"></div>
 
@@ -82,14 +89,14 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
     $(document).ready(function (){
-        if(sessionStorage.getItem("isLogin") == "true"){
-            $("#login").hide();
-            $("#user").show();
-            $("#user").text(sessionStorage.getItem("username"));
-        }else {
-            $("#login").show();
-            $("#user").hide();
-        }
+        // if(sessionStorage.getItem("isLogin") == "true"){
+        //     $("#login").hide();
+        //     $("#user").show();
+        //     $("#user").text(sessionStorage.getItem("username"));
+        // }else {
+        //     $("#login").show();
+        //     $("#user").hide();
+        // }
 
 
         var arrowLogin = $(".arrow-up-login");
@@ -153,23 +160,32 @@
             },
             success : function(result) {
                 if(result.isLogin == true){
-                    sessionStorage.setItem("isLogin","true");
-                    sessionStorage.setItem("username",result.username);
+                    // sessionStorage.setItem("isLogin","true");
+                    // sessionStorage.setItem("username",result.username);
+                    // $("#login").hide();
+                    //
+                    // $("#user").show();
+                    // $("#user").text(sessionStorage.getItem("username"));
+                    $("#usernameLogin").val("");
+                    $("#passwordLogin").val("");
+                    var arrowLogin = $(".arrow-up-login");
+                    var loginForm = $(".login-form");
+                    arrowLogin.hide();
+                    loginForm.hide();
                     $("#login").hide();
-
-                    $("#user").show();
-                    $("#user").text(sessionStorage.getItem("username"));
-
+                    alert("login successd!");
+                    window.location.reload();
                 }else {
+                    $("#usernameLogin").val("");
+                    $("#passwordLogin").val("");
+                    var arrowLogin = $(".arrow-up-login");
+                    var loginForm = $(".login-form");
+                    arrowLogin.hide();
+                    loginForm.hide();
                     alert("login failed!");
-                    console.log(result);
                 }
-                $("#usernameLogin").val("");
-                $("#passwordLogin").val("");
-                var arrowLogin = $(".arrow-up-login");
-                var loginForm = $(".login-form");
-                arrowLogin.hide();
-                loginForm.hide();
+
+
 
             }
         })
